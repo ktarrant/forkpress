@@ -1,0 +1,3 @@
+[submodule "django_recipes"]
+	path = django_recipes
+	url = https://github.com/dgrant/django_recipes
