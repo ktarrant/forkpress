@@ -10,10 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
-import os
+from os.path import dirname, abspath, join
+here = lambda *x: join(abspath(dirname(__file__)), *x)
+PROJECT_ROOT = here("..", "..")
+root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: join(BASE_DIR, ...)
+BASE_DIR = dirname(dirname(abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -100,6 +103,8 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
+TEMPLATE_DIRS = [root('templates')]
+CONN_MAX_AGE = None
