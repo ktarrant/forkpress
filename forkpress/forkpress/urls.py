@@ -13,21 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 #from django.views.generic.simple import direct_to_template
 
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
     #recipes part of the site
-    url(r'', include('recipes.urls')),
-    #registration module
-#    url(r'^accounts/', include('registration.urls')),
+    url(r'', include('recipe.urls')),
+    #account module
+    url(r"^account/", include("account.urls")),
     #admin site
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-)
+]
 
 urlpatterns += staticfiles_urlpatterns()

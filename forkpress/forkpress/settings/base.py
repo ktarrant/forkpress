@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipes'
+    'django.contrib.sites',
+    'account',
+    'recipe',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -46,6 +48,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "account.middleware.LocaleMiddleware",
+    "account.middleware.TimezoneMiddleware",
 ]
 
 ROOT_URLCONF = 'forkpress.urls'
@@ -61,10 +65,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "account.context_processors.account",
+                'recipe',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'forkpress.wsgi.application'
 
@@ -101,10 +108,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Site ID for sites framework
+SITE_ID = 1
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_ROOT = root('static')
 STATIC_URL = '/static/'
-TEMPLATE_DIRS = [root('templates')]
+# TEMPLATE_DIRS = [root('templates')]
 CONN_MAX_AGE = None
