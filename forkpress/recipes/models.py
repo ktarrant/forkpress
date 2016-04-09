@@ -10,13 +10,13 @@ class Food(models.Model):
     protein = models.DecimalField(default=0.0, max_digits=7, decimal_places=2)
 
 class Ingredient(models.Model):
-    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
-    step = models.ForeignKey('Step', on_delete=models.CASCADE)
+    fromRecipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
+    fromStep = models.ForeignKey("Step", on_delete=models.CASCADE)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
     portion = models.FloatField(default=0.0)
 
 class Step(models.Model):
-    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
+    fromRecipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
     number = models.IntegerField(default=1)
     instruction = models.TextField()
     ingredients = models.ManyToManyField(Ingredient)
@@ -24,4 +24,4 @@ class Step(models.Model):
 class Recipe(models.Model):
     pub_date = models.DateTimeField('date published')
     ingredients = models.ManyToManyField(Ingredient)
-    steps = modles.ManyToManyField(Step)
+    steps = models.ManyToManyField(Step)
