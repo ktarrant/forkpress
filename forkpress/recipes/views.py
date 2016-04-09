@@ -5,4 +5,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Recipes index")
+
+def food(request, food_id):
+    return HttpResponse("Food page: %d" % int(food_id))
