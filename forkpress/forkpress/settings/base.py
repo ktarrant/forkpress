@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 from os.path import join, abspath, dirname
 
-PROJECT_ROOT = dirname(dirname(abspath(__file__)))
+PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
