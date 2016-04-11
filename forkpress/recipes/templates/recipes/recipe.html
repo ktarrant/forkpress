@@ -1,0 +1,62 @@
+{% extends "recipes/base.html" %}
+
+{% block title %}Create a Recipe | forkpress{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron" align="center">
+            <h1>{{ recipe.title }}</h1> 
+            <p>{{ recipe.description }}</p>
+            <!-- This is an example detailed description. -->
+          </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="list-group">
+                        <div class="list-group-item" align="center">
+                            <h2 class="list-group-item-heading">Steps</h1>
+                        </div>
+                        {% for step in recipe.steps %}
+                        <a class="list-group-item" href="#">
+                            <span class="badge"><i class="fa fa-cloud"></i></span>
+                            {{ step.instruction }}
+                        </a>
+                        {% endfor %}
+                        <a class="list-group-item" href="#">
+                            <span class="badge"><i class="fa fa-plus"></i></span>
+                            <p class="list-group-item-text">
+                                Add a new step...
+                            </p>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="list-group">
+                        <div class="list-group-item" align="center">
+                            <h2 class="list-group-item-heading">Ingredients</h1>
+                        </div>
+                        {% for ingredient in recipe.ingredients %}
+                        <div class="list-group-item">
+                            <span class="badge"><i class="fa fa-cloud"></i></span>
+                            {{ ingredient.food.name }}
+                        </div>
+                        {% endfor %}
+                        <a class="list-group-item" href="#">
+                            <span class="badge"><i class="fa fa-list-alt"></i></span>
+                            <p class="list-group-item-text">
+                                Convert or scale ingredient list...
+                            </p>
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

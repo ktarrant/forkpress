@@ -22,6 +22,8 @@ class Step(models.Model):
     ingredients = models.ManyToManyField(Ingredient)
 
 class Recipe(models.Model):
+    title = models.CharField(max_length=200, default="")
+    description = models.TextField(default="")
     pub_date = models.DateTimeField('date published')
     ingredients = models.ManyToManyField(Ingredient)
     steps = models.ManyToManyField(Step)
